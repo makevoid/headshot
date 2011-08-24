@@ -42,7 +42,7 @@ role :db,  domain, :primary => true
 
 
 after :deploy, "deploy:cleanup"
-#after :deploy, "deploy:create_symlinks"
+after :deploy, "deploy:create_symlinks"
 #after :deploy, "db:seeds"
 
 namespace :deploy do
@@ -54,7 +54,7 @@ namespace :deploy do
   
   desc "Create some symlinks from shared to public"
   task :create_symlinks do
-    #run "cd #{current_path}/public; ln -s #{deploy_to}/shared/dir dir"
+    run "cd #{current_path}/config; ln -s #{deploy_to}/shared/url2png_secret.txt url2png_secret.txt"
   end
   
 end
