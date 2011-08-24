@@ -13,6 +13,8 @@ work in progress
 
 ### peeping-tom installation
 
+http://www.alexxoid.com/blog/linux/how-to-install-khtml2png.html
+
     sudo aptitude install xvfb xfonts-base xfonts-75dpi xfonts-100dpi imagemagick ttf-mscorefonts-installer python-qt4 python-qt4 build-essential flashplugin-installer git-core
 
     gem install redis sinatra json resque
@@ -44,3 +46,10 @@ not sure:
 
     Xvfb :2 -screen 0 1024x768x24&
     DISPLAY=localhost:2.0 khtml2png2 http://google.com google.png
+    
+    
+### mozshot
+
+drawbacks: requires full x running
+
+https://github.com/sugi/mozshot

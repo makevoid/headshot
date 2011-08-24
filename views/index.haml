@@ -1,6 +1,17 @@
 %section
-  %h2 Hey!
+  %h2 Demo
+  
   
   %article
-    %p This website will be available soon... Stay tuned!
-
+    %form#hshot
+      %label{ for: "url" } url:
+      %input{ name: "url", id: "url", type: "text" }
+      %input{ type: "submit" }
+      
+    %img#spinner{ src: "/imgs/spinner.gif" }
+    #error
+      &nbsp;
+    
+    %div#img
+      %img.himg{ src: @img }
+    put the mouse cursor over the image

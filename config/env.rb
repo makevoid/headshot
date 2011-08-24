@@ -20,9 +20,11 @@ env = ENV["RACK_ENV"] || "development"
 # DataMapper.setup :default, "sqlite://#{APP_PATH}/db/app.sqlite"
 # 
 # 
-# Dir.glob("#{APP_PATH}/models/*").each do |model|
-#   require model
-# end
+
+
+Dir.glob("#{APP_PATH}/models/*").each do |model|
+  require model
+end
 
 
 # require 'extlib'

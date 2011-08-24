@@ -13,4 +13,6 @@ gem 'rack-flash'
 # gem 'dm-validations'
 # gem "extlib"
 
+gem "url2png"
+
 gem 'voidtools', git: "git://github.com/makevoid/voidtools"

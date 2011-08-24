@@ -1,14 +1,58 @@
+require 'haml'
+require 'sass'
+require 'sinatra/base'
+require 'sinatra/reloader'
+require 'json'
+
 path = File.expand_path "../", __FILE__
+APP_PATH = path
 
-require 'url2png'
+class Headshot < Sinatra::Base
+  require "#{APP_PATH}/config/env"
+  
+  configure :development do # use thin start
+    register Sinatra::Reloader
+    also_reload ["controllers/*.rb", "models/*.rb"]
+    set :public, "public"
+    set :static, true
+  end
+  
+  set :haml, { :format => :html5 }
+  require 'rack-flash'
+  enable :sessions
+  use Rack::Flash
+  require 'sinatra/content_for'
+  helpers Sinatra::ContentFor
+  set :method_override, true
 
-Url2png::Config.public_key = 'P4E548D4E3A596'
-Url2png::Config.shared_secret = File.read("#{path}/config/url2png_secret.txt").strip
+  def not_found(object=nil)
+    halt 404, "404 - Page Not Found"
+  end
+  
+  sites = {
+    yahoo_it: "http://yahoo.it"
+  }
+  HS = HShot.new sites
 
-include Url2png::Helpers::Common
+  get "/" do
+    @img = HS.get :yahoo_it
+    haml :index
+  end
 
-url = "http://stylequiz.net"
-img = site_image_url url, :size => '1200x800'
-puts img
+  post '/hshot' do
+    content_type :json
+    begin
+    @img = HS.get params[:url]
+    rescue SiteNotFound
+      resp = { error: "site not found" }.to_json
+    end
+    
+    resp = { url: @img  }.to_json unless resp
+    resp
+  end
 
-# es: http://api.url2png.com/v3/P4E548D4E3A596/ad2faf1f01fd9a433c771a6d87ac0e26/1200x800/http://stylequiz.net
+  get '/css/main.css' do
+    sass :main
+  end
+  
+end
