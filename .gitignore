@@ -1,0 +1,6 @@
+.DS_Store
+.log
+.sqlite
+.pid
+.sass-cache
+config/url2png_secret.txt

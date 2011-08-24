@@ -1,0 +1,126 @@
+@import "mixins"
+
+@mixin button
+  display: inline-block
+  padding: .1em 1em .12em
+  outline: none
+  cursor: pointer
+  text-align: center
+  text-decoration: none
+  font-size: 1.3em
+  @include rounded('.5em')
+  // this determines Mozilla to show the padding
+  border: solid 1px #ccc
+  @include shadow
+  text-shadow: 0 1px 1px rgba(0,0,0,.3)
+  &:hover
+    text-decoration: none
+  &:active
+    position: relative
+    top: 1px
+
+
+// clearfix
+
+*, html, body
+  margin: 0
+  padding: 0
+
+//html, body 
+//  height: 100%     
+//  max-height: 100%
+  
+img
+  border: 0
+
+ul 
+  list-style-type: none
+
+li
+  display: inline
+
+.clear
+  clear: both
+
+a 
+  text-decoration: none
+  
+  
+  
+  
+// style
+
+$bg: #DDD
+$bg_alt: #AAA
+$bg_cont: #FFF
+$txt: #222
+$main: #999
+$alt: #666
+$links: #444
+
+@font-face
+  font-family: Guardian
+  src: url( /fonts/guardian.eot ) /* IE 6,7,8 */  
+  
+@font-face
+  font-family: Guardian
+  src: url('/fonts/guardian.otf')
+  
+
+html, body
+  height: 100%  
+  
+body
+  background: $bg_alt
+  font-family: sans-serif, Helvetica, Arial, Verdana
+  color: $txt
+  font-size: 120%
+  height: 100%
+
+a
+  color: $links
+a:hover
+  color: $links + #111
+
+input
+  padding: 4px 6px
+  width: 300px
+  font-size: 1.15em
+  margin: 6px 0 12px
+  display: block
+input[type='submit'], input.submit
+  width: auto
+
+
+input[type='submit'], input.submit, a.button, nav a
+  +button
+  +color($main)
+  +rounded(15px)
+  font-size: 1.15em
+input[type='submit']:hover, input.submit:hover, a.button:hover, nav a:hover
+  color: $bg
+
+  
+#wrap   
+  height: 100%
+  +gradient($bg, $bg_alt)
+  padding-top: 40px
+
+#container
+  width: 85%
+  margin: 0 auto 40px 
+  height: 100%  
+  
+p 
+  font-size: 0.9em
+  
+h1 
+  margin-bottom: 20px
+  font-size: 2em
+  span
+    font-size: 0.55em
+    display: block  
+h2
+  margin: 20px 0 5px
+h3
+  margin: 15px 0 3px
