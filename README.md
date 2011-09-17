@@ -2,7 +2,10 @@
 
 ### current status
 
-work in progress
+- prototyped
+
+I stopped this project because it was a free demo for a client, but it's open source so use/fork it if you need/like it 
+
 
 
 ## Notes:
