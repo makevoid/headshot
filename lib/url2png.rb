@@ -4,7 +4,7 @@ require 'url2png'
 require 'net/http'
 
 Url2png::Config.public_key = 'P4E548D4E3A596'
-Url2png::Config.shared_secret = File.read("#{path}/config/url2png_secret.txt").strip
+Url2png::Config.shared_secret = File.read("#{ENV["HOME"]}/.url2png").strip
 
 include Url2png::Helpers::Common
 
